@@ -30,19 +30,13 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 
 	@Override
 	public int hash(Integer key) {
-		int hash = key % m;
-		if (hash < 0) {
-			hash += m; // Behandlung von negativen Hash-Werten
-		}
+		int hash = Math.floorMod(x, m);
 		return hash;
 	}
 
 	@Override
 	public int hashTick(Integer key) {
-		int hash = key % prime;
-		if (hash <= 0) {
-			hash += prime; // Behandlung von negativen oder 0 Hash-Werten
-		}
+		int hash = Math.floorMod(x, prime);
 		return hash;
 	}
 }
