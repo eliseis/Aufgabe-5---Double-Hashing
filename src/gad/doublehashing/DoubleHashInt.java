@@ -37,6 +37,8 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	@Override
 	public int hashTick(Integer key) {
 		int positiveX = Math.abs(key);
-		return prime - (positiveX % prime);
+		int remainder = positiveX % prime;
+		int hashTick = prime - remainder;
+		return (hashTick == prime) ? 0 : hashTick;
 	}
 }
