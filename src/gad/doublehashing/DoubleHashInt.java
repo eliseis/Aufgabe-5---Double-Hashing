@@ -29,14 +29,16 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 
 
 	@Override
-	public int hash(int key) {
-		int hash = Math.floorMod(key, m);
+	public int hash(Integer key) {
+		int x = key.intValue();
+		int hash = Math.floorMod(x, m);
 		return hash;
 	}
 
 	@Override
-	public int hashTick(int key) {
-		int hash = Math.floorMod(key, prime);
+	public int hashTick(Integer key) {
+		int x = key.intValue();
+		int hash = Math.floorMod(x, prime);
 		return hash;
 	}
 }
