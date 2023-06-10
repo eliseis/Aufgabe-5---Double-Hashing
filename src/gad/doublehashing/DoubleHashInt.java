@@ -30,11 +30,13 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 
 	@Override
 	public int hash(Integer key) {
-		return key % m;
+		int positiveX = Math.abs(key);
+		return positiveX % m;
 	}
 
 	@Override
 	public int hashTick(Integer key) {
-		return prime - (key % prime);
+		int positiveX = Math.abs(key);
+		return prime - (positiveX % prime);
 	}
 }
