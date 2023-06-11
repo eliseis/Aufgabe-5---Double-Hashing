@@ -13,7 +13,7 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	@Override
 	public int hash(Integer key) {
 		if (key < 0){
-			return (key * getRandomNumber(1,m) % m) + m;
+			return (key * getRandomNumber(1,m - 1) % m) + m;
 		}
 		return key % m;
 	}
