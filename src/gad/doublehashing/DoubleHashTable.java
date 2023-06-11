@@ -18,7 +18,7 @@ public class DoubleHashTable<K, V> {
 	}
 
 	public int hash(K key, int i) {
-		return 0;
+		return hashable.hash(key) + i * hashable.hashTick(key);
 	}
 
 	public boolean insert(K k, V v) {
