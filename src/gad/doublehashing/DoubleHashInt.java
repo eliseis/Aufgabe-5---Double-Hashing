@@ -5,40 +5,22 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	private int prime;
 
 	public DoubleHashInt(int primeSize) {
-		m = findNextPrime(primeSize);
-		prime = findNextPrime(m - 1);
+		m = primeSize;
 	}
-
-	private int findNextPrime(int n) {
-		while (!isPrime(n)) {
-			n++;
-		}
-		return n;
-	}
-	private boolean isPrime(int n) {
-		if (n <= 1) {
-			return false;
-		}
-		for (int i = 2; i * i <= n; i++) {
-			if (n % i == 0) {
-				return false;
-			}
-		}
-		return true;
-	}
-
 
 	@Override
 	public int hash(Integer key) {
-		int x = key.intValue();
-		int hash = Math.floorMod(x, m);
-		return hash;
+		if (key < 0){
+			return (key % m) + m;
+		}
+		return key % m;
 	}
 
 	@Override
 	public int hashTick(Integer key) {
-		int x = key.intValue();
-		int hash = Math.floorMod(x, prime);
-		return hash;
+		if (key < 0){
+			return (key % (m - 1)) + m - 1;
+		}
+		return key % (m - 1);
 	}
 }
