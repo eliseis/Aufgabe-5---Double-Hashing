@@ -19,7 +19,7 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	@Override
 	public int hashTick(Integer key) {
 		if (key < 0){
-			return (key % (m - 1)) + m - 1;
+			return (key % (m - 1)) + m;
 		}
 		return key % (m - 1);
 	}
