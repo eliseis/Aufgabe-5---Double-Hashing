@@ -35,11 +35,10 @@ public class DoubleHashTable<K, V> {
 			index = hash(k, rehashes);
 		}
 
-		if (table[index] != null) {
-			table[index].two();
-		} else {
-			table[index] = new Pair<>(k, v);
+		if (rehashes > 0) {
+			collisions++;
 		}
+		table[index] = new Pair<>(k, v);
 
 		if (rehashes > maxRehashes) {
 			maxRehashes = rehashes;
@@ -54,7 +53,7 @@ public class DoubleHashTable<K, V> {
 
 		while (table[index] != null && rehashes < size) {
 			if (table[index].one().equals(k)) {
-				return Optional.ofNullable(table[index].two());
+				return Optional.of(table[index].two());
 			}
 
 			rehashes++;
