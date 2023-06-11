@@ -6,11 +6,14 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	public DoubleHashInt(int primeSize) {
 		m = primeSize;
 	}
+	public int getRandomNumber(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
+	}
 
 	@Override
 	public int hash(Integer key) {
 		if (key < 0){
-			return (key % m) + m;
+			return (key * getRandomNumber(1,m) % m) + m;
 		}
 		return key % m;
 	}
