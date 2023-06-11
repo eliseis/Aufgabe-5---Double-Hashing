@@ -14,7 +14,7 @@ public class DoubleHashString implements DoubleHashable<String> {
 
 	@Override
 	public int hashTick(String key) {
-		int hash = calculateHash(key, m - 1);
+		int hash = calculateHash(key, m - 1) + 1;
 		return hash;
 	}
 
