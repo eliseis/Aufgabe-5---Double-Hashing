@@ -16,7 +16,7 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 		if (key < 0){
 			return (key * x % m) + m;
 		}
-		return key % m;
+		return key * x % m;
 	}
 
 	@Override
