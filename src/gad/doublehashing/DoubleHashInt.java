@@ -17,7 +17,7 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 			//return (key * x) % m + m;
 			key = -1 * key;
 		}
-		return (int) ((long) key * x) % m;
+		return (int) ((long) key) % m;
 	}
 
 	@Override
