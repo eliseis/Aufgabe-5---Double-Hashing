@@ -25,8 +25,13 @@ public class DoubleHashTable<K, V> {
 		int rehashes = 0;
 		int index = hash(k, rehashes);
 
+
 		while (table[index] != null && !table[index].one().equals(k)) {
 			rehashes++;
+			if (rehashes >= size){
+				collisions++;
+				return false;
+			}
 			index = hash(k, rehashes);
 		}
 
