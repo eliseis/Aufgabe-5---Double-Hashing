@@ -14,7 +14,6 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	@Override
 	public int hash(Integer key) {
 		if (key < 0){
-			//return (key * x) % m + m;
 			key = -1 * key;
 		}
 		return (int) ((long) key) % m;
@@ -23,7 +22,6 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	@Override
 	public int hashTick(Integer key) {
 		if (key < 0){
-			//return (key % (m - 1)) + m;
 			key = -1 * key;
 		}
 		return key % (m - 1) + 1;
