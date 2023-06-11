@@ -1,10 +1,11 @@
 package gad.doublehashing;
 
 public class DoubleHashInt implements DoubleHashable<Integer> {
-	private int m;
+	private int m, x;
 
 	public DoubleHashInt(int primeSize) {
 		m = primeSize;
+		x = getRandomNumber(1,m - 1);
 	}
 	public int getRandomNumber(int min, int max) {
 		return (int) ((Math.random() * (max - min)) + min);
@@ -13,7 +14,7 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 	@Override
 	public int hash(Integer key) {
 		if (key < 0){
-			return (key * getRandomNumber(1,m - 1) % m) + m;
+			return (key * x % m) + m;
 		}
 		return key % m;
 	}
