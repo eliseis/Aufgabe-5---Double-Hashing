@@ -44,14 +44,26 @@ public class DoubleHashTable<K, V> {
 	}
 
 	public Optional<V> find(K k) {
-		return null;
+		int rehashes = 0;
+		int index = hash(k, rehashes);
+
+		while (table[index] != null) {
+			if (table[index].one().equals(k)) {
+				return Optional.ofNullable(table[index].two());
+			}
+
+			rehashes++;
+			index = hash(k, rehashes);
+		}
+
+		return Optional.empty();
 	}
 
 	public int collisions() {
-		return 0;
+		return collisions;
 	}
 
 	public int maxRehashes() {
-		return 0;
+		return maxRehashes;
 	}
 }
