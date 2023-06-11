@@ -2,7 +2,6 @@ package gad.doublehashing;
 
 public class DoubleHashInt implements DoubleHashable<Integer> {
 	private int m;
-	private int prime;
 
 	public DoubleHashInt(int primeSize) {
 		m = primeSize;
@@ -21,6 +20,6 @@ public class DoubleHashInt implements DoubleHashable<Integer> {
 		if (key < 0){
 			return (key % (m - 1)) + m;
 		}
-		return key % (m - 1);
+		return key % (m - 1) + 1;
 	}
 }
