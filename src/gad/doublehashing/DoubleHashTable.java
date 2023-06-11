@@ -52,7 +52,7 @@ public class DoubleHashTable<K, V> {
 		int rehashes = 0;
 		int index = hash(k, rehashes);
 
-		while (table[index] != null && rehashes <= size) {
+		while (table[index] != null && rehashes < size) {
 			if (table[index].one().equals(k)) {
 				return Optional.ofNullable(table[index].two());
 			}
